@@ -18,7 +18,7 @@
 			<input type="text" name="nombre">
 			<br><br>
 			<label for="descripcion">Descripcion</label>
-			<textarea name="descripcion"></textarea>
+			<textarea name="descripcion" cols="30"></textarea>
 		</div>
 		<div class="formulario_derecha">
 			
@@ -38,10 +38,7 @@
 			<br>
 		</div>
 
-	</div>
-		
-		<p></p>
-	</div>
+		<input type="button" name="crear" value="Crear" class="boton_crear_dentro">
 
 </body>
 </html>

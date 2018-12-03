@@ -12,11 +12,15 @@
 .formulario_izquierda {
 	position: relative;
 	top: 1em;
-	left: 1em;
+	left: 5em;
 }
 .formulario_derecha {
 	position: relative;
 	top: -5em;
-	left: 35em;
-	/*text-align: right;*/
+	left: 32em;
+}
+
+.boton_crear_dentro{
+	float: none;
+	text-align: center;
 }
