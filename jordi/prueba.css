@@ -1,0 +1,22 @@
+.formulario {
+  background-color: #fafafa;
+  margin: 1em;
+  margin-left: 14em;
+  margin-right: 14em;
+  padding: 1em;
+  border: 2px solid #ccc;
+}
+.titulo {
+	text-align: center;
+}
+.formulario_izquierda {
+	position: relative;
+	top: 1em;
+	left: 1em;
+}
+.formulario_derecha {
+	position: relative;
+	top: -5em;
+	left: 35em;
+	/*text-align: right;*/
+}
