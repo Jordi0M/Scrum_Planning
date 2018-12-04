@@ -1,4 +1,4 @@
-.formulario {
+#formulario {
   background-color: #fafafa;
   margin: 1em;
   margin-left: 14em;
@@ -6,21 +6,22 @@
   padding: 1em;
   border: 2px solid #ccc;
 }
-.titulo {
+#titulo {
 	text-align: center;
 }
-.formulario_izquierda {
+#formulario_izquierda {
 	position: relative;
 	top: 1em;
 	left: 5em;
 }
-.formulario_derecha {
+#formulario_derecha {
 	position: relative;
-	top: -5em;
+	top: -6em;
 	left: 32em;
 }
 
-.boton_crear_dentro{
-	float: none;
-	text-align: center;
+#boton_crear_dentro{
+	position: relative;
+	left: 25em;
+	bottom: 3em;
 }
