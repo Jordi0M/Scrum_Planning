@@ -1,3 +1,9 @@
+//funciones
+var checkboxMarcado = false;
+var nombreFormularioRelleno = false;
+var comboProductOwner = false;
+var comboScrumMaster = false;
+
 /*
 document.addEventListener('DOMContentLoaded', function(){
 	var crearFormulario = document.getElementsByTagName("input")[0];
@@ -33,6 +39,7 @@ function crearFormulario(){
 
 	//text nombre
 	var label_nombre = document.createElement("input");
+	label_nombre.setAttribute("id", "nombre_proyecto");
 	label_nombre.setAttribute("type", "text");
 	label_nombre.setAttribute("name", "nombre");
 	label_nombre.setAttribute("required", "true");
@@ -108,9 +115,72 @@ function crearFormulario(){
 */
 	//boton crear
 	var crear_boton = document.createElement("input");
-	crear_boton.setAttribute("type","submit");
+	crear_boton.setAttribute("onclick", "comprobacionesFormulario();");
+	crear_boton.setAttribute("type","button");
 	crear_boton.setAttribute("name","crear");
 	crear_boton.setAttribute("value","Crear");
 	crear_boton.setAttribute("id","boton_crear_dentro");
 	document.getElementById("formulario").appendChild(crear_boton);
+}
+
+function comprobacionesFormulario(){
+	comprobarNombreFormularioRelleno();
+	comprobarComboboxSeleccionadoMaster();
+	comprobarComboboxSeleccionadoOwner();
+	comprobarCheck();
+	respuestaFormulario();
+}
+function comprobarCheck() {
+	for (i = 0; i < document.getElementsByClassName("checkboxes").length; i++) {
+		if( document.getElementsByClassName("checkboxes")[i].checked ) {
+		 	checkboxMarcado = true;
+		 	return true;
+		}
+		else{
+			checkboxMarcado = false;
+		}
+	}
+}
+function comprobarNombreFormularioRelleno(){
+	nombre_proyecto = document.getElementById("nombre_proyecto");
+	if (document.getElementById("nombre_proyecto").value == "") {
+		nombreFormularioRelleno = false;
+	}
+	else{
+		nombreFormularioRelleno = true;
+	}
+}
+function comprobarComboboxSeleccionadoMaster(){
+	var lista_scrum_master = document.getElementById("campo_scrum_master");
+    if(lista_scrum_master.selectedIndex !=0 )
+    	comboScrumMaster = true;
+    else{
+    	comboScrumMaster = false;
+    }
+}
+function comprobarComboboxSeleccionadoOwner(){
+	var lista_product_owner = document.getElementById("campo_product_owner");
+    if(lista_product_owner.selectedIndex !=0 )
+    	comboProductOwner = true;
+    else{
+    	comboProductOwner = false;
+    }
+}
+function respuestaFormulario(){
+	if (nombreFormularioRelleno == false) {
+		alert("Escribe un nombre al proyecto");
+	}
+	else if (comboScrumMaster == false) {
+		alert("Selecciona un Scrum Master");
+	}
+	else if (comboProductOwner == false) {
+		alert("Selecciona un Product owner");
+	}
+	else if (checkboxMarcado == false) {
+		alert("Marca como minimo un developer");
+	}
+	else if (checkboxMarcado == true && nombreFormularioRelleno == true 
+	&& comboScrumMaster == true && comboProductOwner == true) {
+		document.getElementById("formulario").submit();
+	}
 }

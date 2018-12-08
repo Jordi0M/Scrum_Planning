@@ -27,7 +27,7 @@
 		<input type="button" name="crearProyecto" value="Crear nuevo proyecto" id="botonCrearProyecto" onclick="crearFormulario()" >
 
 		<div id="div_formulario" hidden>
-			<form id="formulario" method="post" action="formu2.php">
+			<form id="formulario" method="post" action="prueba2.php">
 				<div id="formulario_izquierda">
 				</div>
 				<div id="formulario_derecha">
@@ -40,11 +40,20 @@
 			
 			//combobox scrum_master
 			var select_combobox_scrum = document.createElement("select");
+			select_combobox_scrum.setAttribute("id", "campo_scrum_master");
+			select_combobox_scrum.setAttribute("name", "campo_scrum_master");
 			select_combobox_scrum.setAttribute("required", "true");
+			//opciones del combobox
+			var opcion_por_defecto_scrum = document.createElement("option");
+			opcion_por_defecto_scrum.setAttribute("value",'');
+			var texto_opcion = document.createTextNode('Scrum_master');
+			opcion_por_defecto_scrum.appendChild(texto_opcion);
+			select_combobox_scrum.appendChild(opcion_por_defecto_scrum);
 			<?php 
 			while ($respuesta) {
 				?>
 				var opcion_combobox_scrum = document.createElement("option");
+				opcion_combobox_scrum.setAttribute("value",'<?php echo "$respuesta[name]" ?>');
 				var texto_opcion = document.createTextNode('<?php echo "$respuesta[name]" ?>');
 				opcion_combobox_scrum.appendChild(texto_opcion);
 				select_combobox_scrum.appendChild(opcion_combobox_scrum);
@@ -58,11 +67,20 @@
 
 			//combobox product_owner
 			var select_combobox_product = document.createElement("select");
+			select_combobox_product.setAttribute("id", "campo_product_owner");
+			select_combobox_product.setAttribute("name", "campo_product_owner");
 			select_combobox_product.setAttribute("required", "true");
+			//opciones del combobox
+			var opcion_por_defecto_product = document.createElement("option");
+			opcion_por_defecto_product.setAttribute("value",'');
+			var texto_opcion = document.createTextNode('ProductOwner');
+			opcion_por_defecto_product.appendChild(texto_opcion);
+			select_combobox_product.appendChild(opcion_por_defecto_product);
 			<?php 
 			while ($respuesta2) {
 				?>
 				var opcion_combobox_product = document.createElement("option");
+				opcion_combobox_product.setAttribute("value",'<?php echo "$respuesta2[name]" ?>');
 				var texto_opcion = document.createTextNode('<?php echo "$respuesta2[name]" ?>');
 				opcion_combobox_product.appendChild(texto_opcion);
 				select_combobox_product.appendChild(opcion_combobox_product);
@@ -78,9 +96,12 @@
 			<?php 
 			while ($respuesta3) {
 				?>
+				var i=0;
 				var checkbox = document.createElement("input");
 				checkbox.setAttribute("type","checkbox");
-				checkbox.setAttribute("name",'<?php echo "$respuesta3[name]" ?>');
+				checkbox.setAttribute("class","checkboxes");
+				checkbox.setAttribute("value",'<?php echo "$respuesta3[name]" ?>');
+				checkbox.setAttribute("name",'checkbox[]');
 				document.getElementById("formulario_derecha").appendChild(checkbox);
 				var checkbox_label = document.createElement("label");
 				var texto_label = document.createTextNode('<?php echo "$respuesta3[name]" ?>')
