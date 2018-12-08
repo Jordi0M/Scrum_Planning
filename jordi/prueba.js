@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
 */
 function crearFormulario(){
 	//marco habilitado
-	var elementDiv = document.getElementById("formulario");
+	var elementDiv = document.getElementById("div_formulario");
     elementDiv.hidden = false;
 
 	//h1 formulario
@@ -20,9 +20,9 @@ function crearFormulario(){
 	//inserta el texto en el h1
 	titulo_formulario.appendChild(texto_formulario);
 	//hace un insert al principio del todo
-	document.getElementById("formulario").insertBefore(titulo_formulario, document.getElementById("formulario").firstChild);
+	document.getElementById("div_formulario").insertBefore(titulo_formulario, document.getElementById("div_formulario").firstChild);
 	//inserta un salto de linea
-	//document.getElementById("formulario").appendChild(document.createElement("br"));
+	//document.getElementById("div_formulario").appendChild(document.createElement("br"));
 
 	//label nombre
 	var label_nombre = document.createElement("label");
@@ -35,6 +35,7 @@ function crearFormulario(){
 	var label_nombre = document.createElement("input");
 	label_nombre.setAttribute("type", "text");
 	label_nombre.setAttribute("name", "nombre");
+	label_nombre.setAttribute("required", "true");
 	document.getElementById("formulario_izquierda").appendChild(label_nombre);
 	document.getElementById("formulario_izquierda").appendChild(document.createElement("br"));
 	document.getElementById("formulario_izquierda").appendChild(document.createElement("br"));
@@ -54,6 +55,7 @@ function crearFormulario(){
 	document.getElementById("formulario_izquierda").appendChild(label_descripcion);
 
 	//combobox scrum
+	/*
 	var select_combobox_scrum = document.createElement("select");
 	var opcion1_combobox_scrum = document.createElement("option");
 	var opcion2_combobox_scrum = document.createElement("option");
@@ -65,21 +67,24 @@ function crearFormulario(){
 	select_combobox_scrum.appendChild(opcion2_combobox_scrum);
 	document.getElementById("formulario_derecha").appendChild(select_combobox_scrum);
 	document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
+	*/
 
-	//combobox project
-	var select_combobox_project = document.createElement("select");
-	var opcion1_combobox_project = document.createElement("option");
-	var opcion2_combobox_project = document.createElement("option");
-	var texto_opcion1 = document.createTextNode("Project");
+	//combobox product_owner
+	/*
+	var select_combobox_product = document.createElement("select");
+	var opcion1_combobox_product = document.createElement("option");
+	var opcion2_combobox_product = document.createElement("option");
+	var texto_opcion1 = document.createTextNode("product");
 	var texto_opcion2 = document.createTextNode("opcion2");
-	opcion1_combobox_project.appendChild(texto_opcion1);
-	opcion2_combobox_project.appendChild(texto_opcion2);
-	select_combobox_project.appendChild(opcion1_combobox_project);
-	select_combobox_project.appendChild(opcion2_combobox_project);
-	document.getElementById("formulario_derecha").appendChild(select_combobox_project);
+	opcion1_combobox_product.appendChild(texto_opcion1);
+	opcion2_combobox_product.appendChild(texto_opcion2);
+	select_combobox_product.appendChild(opcion1_combobox_product);
+	select_combobox_product.appendChild(opcion2_combobox_product);
+	document.getElementById("formulario_derecha").appendChild(select_combobox_product);
 	document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 	document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
-
+	*/
+/*
 	//radio button 1
 	var radio_button1 = document.createElement("input");
 	radio_button1.setAttribute("type","radio");
@@ -100,10 +105,10 @@ function crearFormulario(){
 	var texto_label = document.createTextNode("developer2")
 	radio_label2.appendChild(texto_label);
 	document.getElementById("formulario_derecha").appendChild(radio_label2);
-
+*/
 	//boton crear
 	var crear_boton = document.createElement("input");
-	crear_boton.setAttribute("type","button");
+	crear_boton.setAttribute("type","submit");
 	crear_boton.setAttribute("name","crear");
 	crear_boton.setAttribute("value","Crear");
 	crear_boton.setAttribute("id","boton_crear_dentro");
