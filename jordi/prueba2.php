@@ -11,7 +11,7 @@
 	INSERT INTO `proj_users`(`id_proj_user`, `user`, `cod_project`, `name_proj`) VALUES (5,'jmartinez','30','qui2')
 	INSERT INTO `project`(`id_project`, `cod_project`, `name_project`, `description`, `product_owner`, `scrum_master`, `date_start`, `date_finish`, `comments`, `budget`) VALUES (3,30,'nombre_proy','descripcion','emieza','lzabala',now(),now(),'xcomentario',1000)
 	*/
-
+/*
 		$nombre_proyecto = $_POST["nombre"];
 		$campo_scrum_master = $_POST["campo_scrum_master"];
 		$campo_product_owner = $_POST["campo_product_owner"];
@@ -31,18 +31,27 @@
                 foreach ($radio as $key => $value) {
                     echo "<br>$value";
                 }
+                */
 	 ?>
 
 	<?php
-		$sentencia = $mbd->prepare("INSERT INTO REGISTRY (name, value) VALUES (:name, :value)");
-		$sentencia->bindParam(':name', $nombre);
-		$sentencia->bindParam(':value', $valor);
+	   	$pdo = new PDO("mysql:host=localhost;dbname=scrum2","jordi","1234");
 
-		// insertar una fila
-		$nombre = 'uno';
-		$valor = 1;
+	   	$a = "LAST_INSERT_ID()";
+	   	$b = "lzabala";
+	   	$c = 50;
+	   	$d = "xxxxxx";
+
+
+		$sentencia = $pdo->prepare("INSERT INTO 'proj_users' ('id_proj_username', 'username','cod_project', 'name_proj') VALUES (:id_proj_username, :username, :cod_project, :name_proj)");
+		$sentencia->bindParam(':id_proj_username', $a);
+		$sentencia->bindParam(':username',$b);
+		$sentencia->bindParam(':cod_project', $c);
+		$sentencia->bindParam(':name_proj', $d);
+
 		$sentencia->execute();
 
+		/*
 		// insertar otra fila con diferentes valores
 		$nombre = 'dos';
 		$valor = 2;
@@ -62,6 +71,7 @@
 		$nombre = 'dos';
 		$valor = 2;
 		$sentencia->execute();
+		*/
 	?>
 
 </body>

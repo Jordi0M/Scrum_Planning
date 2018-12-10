@@ -82,8 +82,10 @@ function crearFormulario(){
 
 	//text descripcion
 	var numero_number = document.createElement("input");
+	numero_number.setAttribute("id","codigo_proyecto");
 	numero_number.setAttribute("type","number");
 	numero_number.setAttribute("name", "numero_proyecto");
+	label_nombre.setAttribute("required", "true");
 	document.getElementById("formulario_izquierda").appendChild(numero_number);
 
 	//combobox scrum
