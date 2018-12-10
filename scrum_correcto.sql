@@ -1,24 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- Base de datos: `scrum2`
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 03-12-2018 a las 20:10:19
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `scrum`
---
+CREATE DATABASE IF NOT EXISTS `scrum2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `scrum2`;
 
 -- --------------------------------------------------------
 
@@ -30,13 +13,13 @@ CREATE TABLE `project` (
   `id_project` int(11) NOT NULL,
   `cod_project` int(11) NOT NULL,
   `name_project` varchar(30) NOT NULL,
-  `description` varchar(40) NOT NULL,
+  `description` varchar(40),
   `product_owner` varchar(20) NOT NULL,
   `scrum_master` varchar(20) NOT NULL,
-  `date_start` date NOT NULL,
-  `date_finish` date NOT NULL,
-  `comments` varchar(40) NOT NULL,
-  `budget` int(11) NOT NULL
+  `date_start` date,
+  `date_finish` date,
+  `comments` varchar(40),
+  `budget` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -68,7 +51,8 @@ INSERT INTO `proj_users` (`id_proj_username`, `username`, `cod_project`, `name_p
 (1, 'lzabala', 10, '¿Quién es Quién?'),
 (2, 'emieza', 10, '¿Quién es Quién?'),
 (3, 'ksedano', 10, '¿Quién es Quién?'),
-(4, 'xusbcn', 20, 'Gestor de Proyectos SCRUM');
+(4, 'xusbcn', 20, 'Gestor de Proyectos SCRUM'),
+(5, 'lzabala', 20, 'Gestor de Proyectos SCRUM');
 
 -- --------------------------------------------------------
 
@@ -126,7 +110,7 @@ CREATE TABLE `sprints` (
 CREATE TABLE `users` (
   `uid` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(512) NOT NULL,
+  `password` varchar(256) NOT NULL,
   `rol` varchar(20) NOT NULL,
   `name` varchar(20) NOT NULL,
   `last_name` varchar(20) DEFAULT NULL,
@@ -139,10 +123,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `username`, `password`, `rol`, `name`, `last_name`, `email`, `phone_number`) VALUES
-(1, 'lzabala', '287e4df0f29a26fdbe6c7d176495518cf91f197bda36ad3bd4972937b760521f749ab367a2d40b34451bae65039962a5978dab3d8d04fec421ed94e3010bfb73', 'ScrumMaster', 'Leandro', 'Zabala', 'lzabala@xtec.cat', 656788453),
-(2, 'emieza', '0bc60f808678ee95f2e83074b85cdfbf953795d906a761d60082b48300fe88edfde5f86533ae72b08e68017d7503dbfe5f6326afa93a47a08cae825b1546db61', 'ProductOwner', 'Enric', 'Mieza', 'emieza@xtec.cat', 563221789),
-(4, 'ksedano', '73cba74c46bfb8e5bfb6b4b53e1ebbadcccba18e3ece04af8f80bfccb94e42666bd1217a3ec4955d3c78c24dfb7dbea3d2933f3dacaccfd2cb892c1f10bad3d6', 'Developer', 'Kevin', 'Sedano', 'kevinsedanosmx@gemail.com', 617183420),
-(5, 'xusbcn', 'e29726c8a614c006295123da8ae6f3adfe73950b6166230d63e7a536c6734e07231484a022011689b72ae130bb6c96ee783c161c83ca64521903f710dfb971f8', 'Developer', 'Xus', 'Diamante', 'xusbcndo@gemail.com', 625334321);
+(1, 'lzabala', '1D067E85070179168F971E499313A47EBD20C1149A312579BF12446A9C014C8A', 'ScrumMaster', 'Leandro', 'Zabala', 'lzabala@xtec.cat', 656788453),
+(2, 'emieza', '58889A34855BFDF50D032E151EC0BB165227FBBEA912AA7B6FA33DC556714DE7', 'ProductOwner', 'Enric', 'Mieza', 'emieza@xtec.cat', 563221789),
+(4, 'ksedano', '83353FC5A8FDB345A327B9CD55D88302FC7DAEC0026BC432025E0EEF6944E7DE', 'Developer', 'Kevin', 'Sedano', 'kevinsedanosmx@gemail.com', 617183420),
+(5, 'xusbcn', 'D704C35861838F7BFD65C64D0E1EAF31F87673B9418BB627BA6464A5BF065DE0', 'Developer', 'Xus', 'Diamante', 'xusbcndo@gemail.com', 625334321);
 
 --
 -- Índices para tablas volcadas
@@ -197,26 +181,31 @@ ALTER TABLE `users`
 --
 ALTER TABLE `project`
   MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `proj_users`
 --
 ALTER TABLE `proj_users`
-  MODIFY `id_proj_username` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_proj_username` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `specifications`
 --
 ALTER TABLE `specifications`
   MODIFY `id_specification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT de la tabla `sprints`
 --
 ALTER TABLE `sprints`
   MODIFY `id_sprint` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -245,7 +234,4 @@ ALTER TABLE `specifications`
 ALTER TABLE `sprints`
   ADD CONSTRAINT `fk_cod_project_sprints` FOREIGN KEY (`cod_project`) REFERENCES `specifications` (`cod_project`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_cod_project_sprints_project` FOREIGN KEY (`cod_project`) REFERENCES `project` (`cod_project`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--

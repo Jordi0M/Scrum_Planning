@@ -9,7 +9,7 @@
 	<body>
 		<?php 
 
-	   		$pdo = new PDO("mysql:host=localhost;dbname=scrum2","jordi","1234");		 
+	   		$pdo = new PDO("mysql:host=localhost;dbname=scrum2","root","");		 
 			// Prepare
 			$consulta = $pdo->prepare("SELECT name FROM users where rol = 'ScrumMaster'");
 			$consulta2 = $pdo->prepare("SELECT name FROM users where rol = 'ProductOwner'");

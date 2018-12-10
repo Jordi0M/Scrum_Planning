@@ -35,7 +35,8 @@
 	 ?>
 
 	<?php
-	   	$pdo = new PDO("mysql:host=localhost;dbname=scrum2","jordi","1234");
+	/*
+	   	$pdo = new PDO("mysql:host=localhost;dbname=scrum2","root","");
 
 	   	$a = "LAST_INSERT_ID()";
 	   	$b = "lzabala";
@@ -50,6 +51,9 @@
 		$sentencia->bindParam(':name_proj', $d);
 
 		$sentencia->execute();
+	*/
+
+		$conn = new mysqli($servername, $username, $password, $dbname);
 
 		/*
 		// insertar otra fila con diferentes valores
