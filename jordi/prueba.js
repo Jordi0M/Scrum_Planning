@@ -4,14 +4,23 @@ var nombreFormularioRelleno = false;
 var comboProductOwner = false;
 var comboScrumMaster = false;
 
-/*
+
 document.addEventListener('DOMContentLoaded', function(){
-	var crearFormulario = document.getElementsByTagName("input")[0];
-	crearFormulario.addEventListener("click",mostrarFormularioCreacionUsuario);
+	var crear_boton_creacion = document.createElement("input");
+	crear_boton_creacion.setAttribute("onclick", "crearFormulario()");
+	crear_boton_creacion.setAttribute("type","button");
+	crear_boton_creacion.setAttribute("name","crearProyecto");
+	crear_boton_creacion.setAttribute("value","Crear proyecto nuevo");
+	crear_boton_creacion.setAttribute("id","botonCrearProyecto");
+	document.getElementById("id_boton").appendChild(crear_boton_creacion);
+
 });
 
-*/
 function crearFormulario(){
+
+	
+
+
 	//marco habilitado
 	var elementDiv = document.getElementById("div_formulario");
     elementDiv.hidden = false;
@@ -60,6 +69,22 @@ function crearFormulario(){
 	label_descripcion.setAttribute("name", "descripcion");
 	label_descripcion.setAttribute("cols", "30");
 	document.getElementById("formulario_izquierda").appendChild(label_descripcion);
+	document.getElementById("formulario_izquierda").appendChild(document.createElement("br"));
+	document.getElementById("formulario_izquierda").appendChild(document.createElement("br"));
+
+	//label descripcion
+	var label_number = document.createElement("label");
+	var texto_number = document.createTextNode("Codigo de proyecto");
+	label_number.appendChild(texto_number);
+	document.getElementById("formulario_izquierda").appendChild(label_number);
+	document.getElementById("formulario_izquierda").appendChild(document.createElement("br"));
+	
+
+	//text descripcion
+	var numero_number = document.createElement("input");
+	numero_number.setAttribute("type","number");
+	numero_number.setAttribute("name", "numero_proyecto");
+	document.getElementById("formulario_izquierda").appendChild(numero_number);
 
 	//combobox scrum
 	/*

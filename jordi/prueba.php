@@ -23,9 +23,10 @@
 			$respuesta3 = $consulta3->fetch();
 
 		 ?>
-
-		<input type="button" name="crearProyecto" value="Crear nuevo proyecto" id="botonCrearProyecto" onclick="crearFormulario()" >
-
+		
+		<div id="id_boton" >
+			
+		</div>
 		<div id="div_formulario" hidden>
 			<form id="formulario" method="post" action="prueba2.php">
 				<div id="formulario_izquierda">
